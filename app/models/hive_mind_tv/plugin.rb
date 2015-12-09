@@ -5,7 +5,6 @@ module HiveMindTv
     has_one :device, as: :plugin
 
     def self.create(*args)
-      puts args[0]
       if args[0] and args[0].keys.include? 'macs'
         args[0]['name_seed'] = args[0]['macs'][0]
         args[0].delete('macs')
@@ -43,7 +42,7 @@ module HiveMindTv
     end
 
     def self.plugin_params params
-      params.permit(:range, :user_agent, :macs)
+      params.permit(:range, :user_agent, macs: [])
     end
   end
 end
