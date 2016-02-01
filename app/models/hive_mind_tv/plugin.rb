@@ -13,6 +13,15 @@ module HiveMindTv
       super(*args)
     end
 
+    def update(*args)
+      if args[0] and args[0].keys.include? 'macs'
+        args[0]['name_seed'] = args[0]['macs'][0]
+        args[0].delete('macs')
+      end
+
+      super(*args)
+    end
+
     def name
       if ! self.name_seed
         if self.device and self.device.macs.length > 0
