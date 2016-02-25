@@ -14,6 +14,8 @@
           <button id="select-hive" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><%= h.nil? ? '[Disconnected]' : h.name %>
           <span class="caret"></span></button>
           <ul class="dropdown-menu">
+            <input type="hidden" class="hive_id" value="<%= h.nil? ? nil : h.id %>">
+            <input type="hidden" class="device_id" value="<%= device.id %>">
             <li><a href="#" id="disconnect">[Disconnected]</a></li>
             <% Device.all.select{ |d| d.device_type == 'Hive' }.each do |h| %>
             <li><a href="#" id="<%=h.id %>"><%= h.name %></a></li>
