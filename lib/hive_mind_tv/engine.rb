@@ -13,5 +13,9 @@ module HiveMindTv
         end
       end
     end
+
+    initializer :assets do |app|
+      app.config.assets.precompile += %w( hive_mind_tv.js )
+    end
   end
 end
