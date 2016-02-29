@@ -40,6 +40,12 @@ module HiveMindTv
       EliteUniverse::Planet.new(*w).name
     end
 
+    def details
+      {
+        'application' => self.application
+      }
+    end
+
     def self.plugin_params params
       params.permit(:range, :user_agent, macs: [])
     end
