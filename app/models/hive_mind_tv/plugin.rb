@@ -31,13 +31,18 @@ module HiveMindTv
         end
       end
 
-      w = []
       parts = self.name_seed.split(':')
-      3.times do |i|
-        w[i] = (parts[2*i] + parts[2*i + 1]).to_i(16)
-      end
-
-      EliteUniverse::Planet.new(*w).name
+      # The name generation system can return the same name when the input
+      # values are changed by small amounts. Pairs 3, 4 and 5 are set by the
+      # vendor for the specific interface and so it is possible (though
+      # unlikely) to have devices with address that only change in pair 5.
+      # The chance of duplicate names can be reduced by using pairs 0, 1 and 2
+      # (representing the vendor) as the least significant parts.
+      EliteUniverse::Planet.new(
+        (parts[3] + parts[0]).to_i(16),
+        (parts[4] + parts[1]).to_i(16),
+        (parts[5] + parts[2]).to_i(16)
+      ).name
     end
 
     def details
