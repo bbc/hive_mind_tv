@@ -52,7 +52,7 @@ module HiveMindTv
     end
 
     def self.plugin_params params
-      params.permit(:range, :user_agent, macs: [])
+      params.permit(:range, :user_agent, :application, macs: [])
     end
   end
 end
