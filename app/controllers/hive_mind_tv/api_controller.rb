@@ -7,7 +7,7 @@ class HiveMindTv::ApiController < ApplicationController
     response = {}
     status = :ok
 
-    if device = Device.find_by(params[:device][:id])
+    if device = Device.find(params[:device][:id])
       if device.plugin_type == 'HiveMindTv::Plugin'
         device.plugin.application = params[:device][:application]
         device.plugin.save

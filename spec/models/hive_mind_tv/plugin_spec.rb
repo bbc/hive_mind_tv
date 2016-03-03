@@ -7,7 +7,7 @@ module HiveMindTv
       # David Braben. The 3x2-byte 'random' seed comes from the MAC address.
       # Certain MACs should return known planet names.
       it 'gets the name Lave' do
-        dev = Plugin.create('macs' => ['ad:38:14:9c:15:1d'])
+        dev = Plugin.create('macs' => ['38:9c:1d:ad:14:15'])
         expect(dev.name).to eq 'Lave'
       end
     end
