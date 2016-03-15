@@ -1,7 +1,7 @@
 $(function(){
-  $(".dropdown-menu li a").click(function(event) {
-    var hive = $(".dropdown-menu .hive_id");
-    var device_id = $(".dropdown-menu .device_id").val();
+  $(".hive-select-menu li a").click(function(event) {
+    var hive = $(".hive-select-menu .hive_id");
+    var device_id = $(".hive-select-menu .device_id").val();
     var hive_id = null;
     event.preventDefault();
     if (event.toElement.id === 'disconnect') {

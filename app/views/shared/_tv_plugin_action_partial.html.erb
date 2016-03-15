@@ -13,7 +13,7 @@
           <% h = HiveMindHive::Plugin.find_by_connected_device(device) %>
           <button id="select-hive" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><%= h.nil? ? '[Disconnected]' : h.name %>
           <span class="caret"></span></button>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu hive-select-menu">
             <input type="hidden" class="hive_id" value="<%= h.nil? ? nil : h.id %>">
             <input type="hidden" class="device_id" value="<%= device.id %>">
             <li><a href="#" id="disconnect">[Disconnected]</a></li>
