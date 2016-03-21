@@ -7,7 +7,10 @@ class HiveMindTv::ApiController < ApplicationController
     response = {}
     status = :ok
 
-    if device = Device.find(params[:device][:id])
+    if ! params[:device][:id]
+      response = { error: 'Missing device id' }
+      status = :unprocessable_entity
+    elsif device = Device.find_by(id: params[:device][:id])
       if device.plugin_type == 'HiveMindTv::Plugin'
         device.plugin.application = params[:device][:application]
         device.plugin.save
