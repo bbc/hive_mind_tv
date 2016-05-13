@@ -8,16 +8,24 @@
   </tr>
   </thead>
   <tbody>
+  <tr>
+    <td>New</td>
+    <td><input type="hidden" id="action_type-new" value="Redirect">Redirect</td>
+    <td><input type="text" class="form-control" id="body-new" placeholder="URL" width='100%'></td>
+    <td><button type="button" id="new" class="btn btn-primary redo_action">
+        Add
+        </button></td>
+  </tr>
   <% @device.device_actions.reverse[0..4].each do |a| %>
     <tr>
       <td><%= a.executed_at || 'Pending' %></td>
-      <td id="action_type-<%= a.id %>"><%= a.action_type %></td>
-      <td id="body-<%= a.id %>"><%= a.body %></td>
+      <td><input type="hidden" id="action_type-<%= a.id %>" value="<%= a.action_type %>"><%= a.action_type %></td>
+      <td><input type="hidden" id="body-<%= a.id %>" value="<%= a.body %>"><%= a.body %></td>
       <td><% if a.executed_at %><button type="button" id="<%= a.id %>" class="btn btn-primary redo_action">
           <input type="hidden" class="redo_action_type" value="<%= a.action_type %>">
           <input type="hidden" class="redo_body" value="<%= a.body %>">
           Redo
-          </button></span><% end %></td>
+          </button><% end %></td>
     </tr>
   <% end %>
   </tbody>
