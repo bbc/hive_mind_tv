@@ -3,7 +3,6 @@ $(function() {
     var id = this.valueOf().id;
     var action_type = $('#action_type-' + id).val();
     var body = $('#body-' + id).val();
-alert(body);
     $.ajax({
       type: 'PUT',
       url: '/api/devices/action',
